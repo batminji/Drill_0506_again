@@ -54,7 +54,7 @@ def set_new_target_arrow():
     global target_exist
 
     # if len(points) > 0 :
-    if points :  #  points 리스트 안에 남아 있는 점이 있으면,
+    if points:  # points 리스트 안에 남아 있는 점이 있으면,
         sx, sy = cx, cy  # p1 : 시작점
         # hx, hy = 50, 50  # Ctrl + D 복사 붙이기
         hx, hy = points[0]
@@ -89,7 +89,7 @@ def update_world():
             cx = (1 - t) * sx + t * hx  # cx 는 시작 x와 끝 x를 1-t : t 의 비율로 섞은 위치
             cy = (1 - t) * sy + t * hy
             t += 0.001
-        else :  # 목표 지점에 도달하면,
+        else:  # 목표 지점에 도달하면,
             cx, cy = hx, hy  # 캐릭터 위치를 목적지 위치와 강제로 반정확히 일치시킴.
             del points[0]  # 목표 지점에 왔기 때문에, 더이상 필요 없는 점을 삭제
             set_new_target_arrow()
