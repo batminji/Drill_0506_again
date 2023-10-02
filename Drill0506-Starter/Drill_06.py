@@ -41,16 +41,17 @@ def reset_world():
     action = 3
 
     points = [(100, 900), (1200, 800), (500, 100)]
-    # set_new_target_arrow()
+    set_new_target_arrow()
 
 
 def set_new_target_arrow():
     global sx, sy, hx, hy, t
     global action
     global frame
+    global points
     sx, sy = cx, cy  # p1 : 시작점
     # hx, hy = 50, 50  # Ctrl + D 복사 붙이기
-    hx, hy = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
+    hx, hy = points[0]
     t = 0.0
     action = 1 if sx < hx else 0
     frame = 0
@@ -73,13 +74,13 @@ def update_world():
     global t
     frame = (frame + 1) % 8
 
-    # if t <= 1.0:
-    #     cx = (1 - t) * sx + t * hx  # cx 는 시작 x와 끝 x를 1-t : t 의 비율로 섞은 위치
-    #     cy = (1 - t) * sy + t * hy
-    #     t += 0.001
-    # else :
-    #     cx, cy = hx, hy  # 캐릭터 위치를 목적지 위치와 강제로 반정확히 일치시킴.
-    #     set_new_target_arrow()
+    if t <= 1.0:
+        cx = (1 - t) * sx + t * hx  # cx 는 시작 x와 끝 x를 1-t : t 의 비율로 섞은 위치
+        cy = (1 - t) * sy + t * hy
+        t += 0.001
+    else :
+        cx, cy = hx, hy  # 캐릭터 위치를 목적지 위치와 강제로 반정확히 일치시킴.
+        set_new_target_arrow()
 
 
 
